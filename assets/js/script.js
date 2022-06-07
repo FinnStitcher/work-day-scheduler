@@ -91,16 +91,15 @@ $(".container").on("click", ".description", function () {
     textInput.trigger("focus");
 });
 
-// TEMPORARY - NEEDS TO BE REVISED AFTER SAVING AND LOADING ARE IMPLEMENTED
-// $(".container").on("blur", "textarea", function () {
-//     var text = $(this).val().trim();
-//     var paragraph = $("<p>").text(text);
-//     var div = $("<div>").addClass("col-12 col-md-8 description");
+$(".container").on("blur", "textarea", function () {
+    var text = $(this).val().trim();
+    var paragraph = $("<p>").text(text);
+    var div = $("<div>").addClass("col-12 col-md-8 description");
 
-//     div.append(paragraph);
+    div.append(paragraph);
 
-//     $(this).replaceWith(div);
-// });
+    $(this).replaceWith(div);
+});
 
 $(".container").on("click", ".saveBtn i", function () {
     var rowId = $(this).closest(".row").attr("id");
