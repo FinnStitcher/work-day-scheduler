@@ -54,7 +54,7 @@ function updateDate() {
     var msecToNextDay = Math.abs(rightNow.diff(midnight)) + 1;
     
     setTimeout(function () {
-        setInterval(displayDate(), 1001 * 60 * 60 * 24)
+        setInterval(displayDate(), 1000 * 60 * 60 * 24 + 1)
     }, msecToNextDay);
 };
 
