@@ -1,3 +1,15 @@
+var savedTasks = {
+    9: null,
+    10: null,
+    11: null,
+    12: null,
+    13: null,
+    14: null,
+    15: null,
+    16: null,
+    17: null
+};
+
 var hour = moment().startOf('hour');
 var timeBlocks = $(".time-block");
 
@@ -60,6 +72,7 @@ $(".container").on("click", ".description", function () {
     textInput.trigger("focus");
 });
 
+// TEMPORARY - NEEDS TO BE REVISED AFTER SAVING IS IMPLEMENTED
 $(".container").on("blur", "textarea", function () {
     var text = $(this).val().trim();
     var paragraph = $("<p>").text(text);
@@ -68,6 +81,14 @@ $(".container").on("blur", "textarea", function () {
     div.append(paragraph);
 
     $(this).replaceWith(div);
+});
+
+$(".container").on("click", ".saveBtn i", function () {
+    var rowId = $(this).closest(".row").attr("id");
+    var descText = $(`#${rowId} .description p`).text();
+
+    savedTasks[rowId] = descText;
+    localStorage.setItem("workscheduler", JSON.stringify(savedTasks));
 });
 
 initializeTime();
