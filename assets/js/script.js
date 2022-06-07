@@ -64,9 +64,13 @@ function displayDate() {
 };
 
 function loadSchedule() {
+    // retrieve and reformat data
     var tasksFromStorage = localStorage.getItem("workscheduler");
     savedTasks = JSON.parse(tasksFromStorage);
-    $.each(savedTasks, function (index) {
+
+    timeBlocks.each(function (index) {
+        var rowId = $(this).attr("id");
+        var descEl = $("#" + rowId).find(".description p");
     });
 };
 
@@ -92,7 +96,7 @@ $(".container").on("blur", "textarea", function () {
 
 $(".container").on("click", ".saveBtn i", function () {
     var rowId = $(this).closest(".row").attr("id");
-    var descText = $(rowId).children(".description p").text();
+    var descText = $("#" + rowId).find(".description p").text();
 
     savedTasks[rowId] = descText;
     localStorage.setItem("workscheduler", JSON.stringify(savedTasks));
