@@ -36,6 +36,16 @@ function setTimeStyles() {
     });    
 };
 
+function updateDate() {
+    var rightNow = moment();
+    var midnight = moment().startOf('day').add(1, 'days');
+    var msecToNextDay = Math.abs(rightNow.diff(midnight));
+    
+    setTimeout(function () {
+        setInterval(displayDate(), 1000 * 60 * 60 * 24)
+    }, msecToNextDay);
+};
+
 function displayDate() {
     var date = moment().format("dddd, MMMM Do");
     $("#currentDay").text(`Today is ${date}.`);
