@@ -39,10 +39,10 @@ function setTimeStyles() {
 function updateDate() {
     var rightNow = moment();
     var midnight = moment().startOf('day').add(1, 'days');
-    var msecToNextDay = Math.abs(rightNow.diff(midnight));
+    var msecToNextDay = Math.abs(rightNow.diff(midnight)) + 1;
     
     setTimeout(function () {
-        setInterval(displayDate(), 1000 * 60 * 60 * 24)
+        setInterval(displayDate(), 1001 * 60 * 60 * 24)
     }, msecToNextDay);
 };
 
