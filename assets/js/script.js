@@ -51,5 +51,24 @@ function displayDate() {
     $("#currentDay").text(`Today is ${date}.`);
 };
 
+$(".container").on("click", ".description", function () {
+    var text = $(this).text().trim();
+    var textInput = $("<textarea>").addClass("col-12 col-md-8 form-control").val(text);
+
+    $(this).replaceWith(textInput);
+
+    textInput.trigger("focus");
+});
+
+$(".container").on("blur", "textarea", function () {
+    var text = $(this).val().trim();
+    var paragraph = $("<p>").text(text);
+    var div = $("<div>").addClass("col-12 col-md-8 description");
+
+    div.append(paragraph);
+
+    $(this).replaceWith(div);
+});
+
 initializeTime();
 displayDate();
