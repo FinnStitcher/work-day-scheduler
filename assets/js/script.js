@@ -1,13 +1,13 @@
 var savedTasks = {
-    9: "",
-    10: "",
-    11: "",
-    12: "",
-    13: "",
-    14: "",
-    15: "",
-    16: "",
-    17: ""
+    9: "Free space",
+    10: "Free space",
+    11: "Free space",
+    12: "Free space",
+    13: "Free space",
+    14: "Free space",
+    15: "Free space",
+    16: "Free space",
+    17: "Free space"
 };
 
 var hour = moment().startOf('hour');
@@ -66,11 +66,19 @@ function displayDate() {
 function loadSchedule() {
     // retrieve and reformat data
     var tasksFromStorage = localStorage.getItem("workscheduler");
-    savedTasks = JSON.parse(tasksFromStorage);
+    // this only runs if there IS saved data, because otherwise, we want the dummy text to print
+    if (tasksFromStorage) {
+        savedTasks = JSON.parse(tasksFromStorage);
+    };
 
     timeBlocks.each(function (index) {
         var rowId = $(this).attr("id");
-        var descEl = $("#" + rowId).find(".description p");
+        // get the description paragraph in this time block
+        var paragraphEl = $("#" + rowId).find(".description p");
+        // make a new paragraph
+        var newParagraphEl = $("<p>").text(savedTasks[rowId]);
+        // replace the original paragraph with it
+        paragraphEl.replaceWith(newParagraphEl);
     });
 };
 
@@ -84,21 +92,32 @@ $(".container").on("click", ".description", function () {
 });
 
 // TEMPORARY - NEEDS TO BE REVISED AFTER SAVING AND LOADING ARE IMPLEMENTED
-$(".container").on("blur", "textarea", function () {
-    var text = $(this).val().trim();
-    var paragraph = $("<p>").text(text);
-    var div = $("<div>").addClass("col-12 col-md-8 description");
+// $(".container").on("blur", "textarea", function () {
+//     var text = $(this).val().trim();
+//     var paragraph = $("<p>").text(text);
+//     var div = $("<div>").addClass("col-12 col-md-8 description");
 
-    div.append(paragraph);
+//     div.append(paragraph);
 
-    $(this).replaceWith(div);
-});
+//     $(this).replaceWith(div);
+// });
 
 $(".container").on("click", ".saveBtn i", function () {
     var rowId = $(this).closest(".row").attr("id");
-    var descText = $("#" + rowId).find(".description p").text();
+    var textArea = $("#" + rowId).find("textarea");
+    var textToSave;
 
-    savedTasks[rowId] = descText;
+    // check if there is, in fact, a textarea
+    if (textArea.length !== 0) {
+        // get the text
+        textToSave = textArea.val();
+    } else {
+        // there isn't a textarea, so there must be a .description
+        // get the text 
+        textToSave = $("#" + rowId).find(".description p").text();
+    };
+
+    savedTasks[rowId] = textToSave;
     localStorage.setItem("workscheduler", JSON.stringify(savedTasks));
 });
 
