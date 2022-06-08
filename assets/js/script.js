@@ -26,6 +26,7 @@ function initializeTime() {
     setTimeStyles();
 
     setTimeout(function () {
+        setTimeStyles();
         // when this timeout ends, the interval will begin to call setTimeStyles() every hour
         setInterval(setTimeStyles(), 1000 * 60 * 60);
     }, msecToNextHour);
@@ -54,6 +55,7 @@ function updateDate() {
     var msecToNextDay = Math.abs(rightNow.diff(midnight)) + 1;
     
     setTimeout(function () {
+        displayDate();
         setInterval(displayDate(), 1000 * 60 * 60 * 24 + 1)
     }, msecToNextDay);
 };
