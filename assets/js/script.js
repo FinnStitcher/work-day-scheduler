@@ -25,6 +25,10 @@ function initializeTime() {
     // run setTimeStyles once to make sure things look correct on loading
     setTimeStyles();
 
+    // run date-related functions
+    displayDate();
+    updateDate();
+
     setTimeout(function () {
         setTimeStyles();
         // when this timeout ends, the interval will begin to call setTimeStyles() every hour
@@ -124,4 +128,3 @@ $(".container").on("click", ".saveBtn i", function () {
 
 loadSchedule();
 initializeTime();
-displayDate();
