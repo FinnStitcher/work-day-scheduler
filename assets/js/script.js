@@ -28,7 +28,7 @@ function initializeTime() {
     setTimeout(function () {
         setTimeStyles();
         // when this timeout ends, the interval will begin to call setTimeStyles() every hour
-        setInterval(setTimeStyles(), 1000 * 60 * 60);
+        setInterval(setTimeStyles, 1000 * 60 * 60);
     }, msecToNextHour);
 };
 
