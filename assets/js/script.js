@@ -56,7 +56,7 @@ function updateDate() {
     
     setTimeout(function () {
         displayDate();
-        setInterval(displayDate(), 1000 * 60 * 60 * 24 + 1)
+        setInterval(displayDate, 1000 * 60 * 60 * 24 + 1)
     }, msecToNextDay);
 };
 
