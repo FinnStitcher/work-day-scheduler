@@ -91,10 +91,14 @@ function loadSchedule() {
 $(".container").on("click", ".description", function () {
     var text = $(this).text().trim();
     var textInput = $("<textarea>").addClass("col-12 col-md-8 form-control").val(text);
+    var saveBtn = $(this).siblings(".saveBtn");
 
     $(this).replaceWith(textInput);
 
     textInput.trigger("focus");
+
+    // background changes color to indicate you need to save changes
+    saveBtn.addClass("bg-warning");
 });
 
 $(".container").on("blur", "textarea", function () {
@@ -124,6 +128,9 @@ $(".container").on("click", ".saveBtn i", function () {
 
     savedTasks[rowId] = textToSave;
     localStorage.setItem("workscheduler", JSON.stringify(savedTasks));
+
+    // reset color
+    $(this).closest(".saveBtn").removeClass("bg-warning");
 });
 
 loadSchedule();
