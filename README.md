@@ -13,3 +13,5 @@ JavaScript, jQuery, and Bootstrap. Starter code provided by the Washington Unive
 
 # How to Use
 Work Day Scheduler is available live at https://finnstitcher.github.io/work-day-scheduler/.
+
+![Work-Day-Scheduler](https://user-images.githubusercontent.com/104468624/172944728-70af305c-9262-4b9d-b02a-2740aaf85aa2.png)
