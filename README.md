@@ -9,7 +9,7 @@ A simple browser application to schedule your workday.
 - Time blocks change color to indicate if they are in the past, present, or future, and update on their own every hour.
 
 # Made With
-JavaScript, jQuery, and Bootstrap.
+JavaScript, jQuery, and Bootstrap. Starter code provided by the Washington University Coding Boot Camp.
 
 # How to Use
 Work Day Scheduler is available live at https://finnstitcher.github.io/work-day-scheduler/.
